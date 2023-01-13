@@ -12,6 +12,13 @@
 #include <string.h>
 #include "libft.h"
 
+int print_error(char *str)
+{
+    ft_putendl_fd("Error", 2);
+    ft_putendl_fd(str, 2);
+    exit(1);
+}
+
 int str_tab_len(char **tab)
 {
     int len;
@@ -32,7 +39,7 @@ int file_size(const char *path)
     char_count = 0;
     fd = open(path, O_RDONLY);
     if (fd < 0)
-        exit(1);
+        print_error("File can not be read.");
     buffer = malloc(sizeof(char));
     while (read(fd, buffer, 1))
         char_count++;
@@ -41,6 +48,17 @@ int file_size(const char *path)
     return (char_count);
 }
 
+int check_extention(const char *path, const char *extension)
+{
+    char *dot;
+    
+    if (!path && ft_strlen(path) <= ft_strlen(extension) + 1)
+        return (0);
+    dot = ft_strrchr(path, '.');
+    if (!dot)
+        return (0);
+    return (ft_strncmp(dot + 1, extension, ft_strlen(dot + 1)) == 0);
+}
 
 char **parse_file(const char *path)
 {
@@ -48,14 +66,19 @@ char **parse_file(const char *path)
     char    *buffer;
     int     len;
     int     fd;
-
+    
+    if (!check_extention(path, "ber"))
+        print_error("Invalid file extension.");
     len = file_size(path);
     fd = open(path, O_RDONLY);
+    if (fd < 0)
+        print_error("File can not be read.");
     buffer = malloc(sizeof(char) * len);
-
     if (!read(fd, buffer, len))
         return (NULL);
     map = ft_split(buffer, '\n');
+    if (!*map)
+        print_error("Empty file.");
     free(buffer);
     close(fd);
     return map;
@@ -117,12 +140,16 @@ int count_number_of_chars(char **map, char c)
 
 int has_valid_number_of_objects(char **map)
 {
-    return (
-            count_number_of_chars(map, 'E') == 1 &&
-            count_number_of_chars(map, 'P') == 1 &&
-            count_number_of_chars(map, 'C') > 0 &&
-            count_number_of_chars(map, '0') > 0
-            );
+    if (count_number_of_chars(map, 'E') != 1)
+        return (print_error("There should be one exit."));
+    else if (count_number_of_chars(map, 'P') != 1)
+        return (print_error("There should be one player."));
+    else if (count_number_of_chars(map, 'C') < 1)
+        return (print_error("There should be at least one collectible."));
+    else if (count_number_of_chars(map, '0') < 1)
+        return (print_error("There should be at least one empty space"));
+    else
+        return (1);
 }
 
 int is_surrounded_by_walls(char **map)
@@ -150,47 +177,44 @@ char **cpy_tab(char **tab)
 {
     char **cpy;
     size_t len;
+    int i;
     
     len = str_tab_len(tab) * ft_strlen(*tab) * sizeof(char);
     cpy = malloc(len);
-    int i = 0;
+    if(!cpy)
+        return (NULL);
+    i = 0;
     while (tab[i])
     {
         cpy[i] = ft_strdup(tab[i]);
         i++;
     }
-    
     return (cpy);
 }
 
 int    check_char(char *c)
 {
     int is_object;
-    is_object = (*c == 'C' || *c == 'E');
-    *c = 'X';
+    is_object = (*c == 'C' || *c == 'E' || *c == 'P');
+    *c = '_';
     return (is_object);
 }
 
-int   check_borders(char **map, int row, int col)
+int   num_of_reachable_objects(char **map, int row, int col)
 {
-    int objects_count;
-    
     if (row < 1 ||
         row > str_tab_len(map) - 2 ||
         col < 1 ||
         col > ft_strlen(*map) - 2 ||
-        map[row][col] == 'X' ||
+        map[row][col] == '_' ||
         map[row][col] == '1')
         return (0);
-    printf("row: %d, col %d\n", row, col);
     
-    objects_count = (check_char(&map[row][col]) +
-                     check_borders(map, row, col + 1) +
-                     check_borders(map, row, col - 1) +
-                     check_borders(map, row + 1, col) +
-                     check_borders(map, row - 1, col));
-    return (objects_count);
-            
+    return (check_char(&map[row][col]) +
+            num_of_reachable_objects(map, row, col + 1) +
+            num_of_reachable_objects(map, row, col - 1) +
+            num_of_reachable_objects(map, row + 1, col) +
+            num_of_reachable_objects(map, row - 1, col));
 }
 
 int is_playable(char **map)
@@ -215,19 +239,24 @@ int is_playable(char **map)
         }
         row++;
     }
-    int num_of_obj = check_borders(cpy, row - 1, col - 1);
-    free(cpy);
-    return (num_of_obj == 1 + count_number_of_chars(map, 'C'));
+    int num_of_obj = num_of_reachable_objects(cpy, row - 1, col - 1);
+    return (num_of_obj == 2 + count_number_of_chars(map, 'C'));
 }
 
-
-int check_map(char **map)
+int is_valid_map_check_map(char **map)
 {
-    return (is_rectangle(map) &&
-            has_only_valid_chars(map) &&
-            has_valid_number_of_objects(map) &&
-            is_surrounded_by_walls(map) &&
-            is_playable(map));
+    if (!is_rectangle(map))
+        return (print_error("The map must be rectangular."));
+    else if (!has_only_valid_chars(map))
+        return (print_error("The map has invalid characters"));
+    else if (!has_valid_number_of_objects(map))
+        return (print_error("The map has invalid number of objects."));
+    else if (!is_surrounded_by_walls(map))
+        return (print_error("The map must be closed/surrounded by walls."));
+    else if (!is_playable(map))
+        return (print_error("There’s no valid path in the map."));
+    else
+        return (1);
 }
 
 int main(int argc, char **argv)
@@ -238,7 +267,7 @@ int main(int argc, char **argv)
     if (!*map)
         return (1);
     
-    printf("check: %d\n", check_map(map));
+    printf("check: %d\n", is_valid_map_check_map(map));
     
     return (0);
 }
