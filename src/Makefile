@@ -1,13 +1,14 @@
-SRC =		main.c 			\
-			print_error.c 	\
-			read_file.c		\
-			str_tab_utils.c	\
-			contains_only.c \
-			has_valid_number_of_objects.c \
-			is_playable.c \
-			is_rectangle.c \
-			is_surrounded_by_walls.c \
-			is_valid_map.c \
+SRC =		main.c 							\
+			print_error.c 					\
+			read_file.c						\
+			str_tab_utils.c					\
+			contains_only.c 				\
+			has_valid_number_of_objects.c	\
+			is_playable.c					\
+			is_rectangle.c					\
+			is_surrounded_by_walls.c		\
+			is_valid_map.c					\
+			create_map.c					\
 
 
 NAME = so_long_main

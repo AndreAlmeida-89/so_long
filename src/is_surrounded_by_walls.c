@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:33:39 by andde-so          #+#    #+#             */
-/*   Updated: 2023/01/15 10:33:57 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/01/15 11:07:59 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int is_surrounded_by_walls(char **map)
 	{
 		if (i == 0 || i == line_count)
 		{
-			if (count_chars(map[i], '1') != ft_strlen(map[i]))
+			if (count_chars(map[i], WALL) != ft_strlen(map[i]))
 				return (0);
 		}
-		else if (map[i][0] != '1' || map[i][ft_strlen(map[i]) - 1] != '1')
+		else if (map[i][0] != WALL || map[i][ft_strlen(map[i]) - 1] != WALL)
 			return (0);
 		i++;
 	}
