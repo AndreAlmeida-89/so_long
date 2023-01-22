@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/01/21 15:56:03 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/01/22 17:52:42 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define PLAYER_IMG "img/player1.xpm"
+#define WALL_IMG "img/wall.xpm"
+#define EXIT_IMG "img/exit.xpm"
+#define COLLECT_IMG "img/collect.xpm"
+#define FLOOR_IMG "img/floor.xpm"
+
 typedef enum
 {
 	ON_KEYDOWN = 2,
@@ -32,6 +38,19 @@ typedef enum
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 } t_event;
+
+typedef enum
+{
+	W_KEY = 13,
+	A_KEY = 0,
+	S_KEY = 1,
+	D_KEY = 2,
+	UP_KEY = 126,
+	LEFT_KEY = 123,
+	DOWN_KEY = 125,
+	RIGHT_KEY = 124,
+	ESC_KEY = 53
+} t_key;
 
 typedef enum
 {
@@ -56,6 +75,17 @@ typedef struct s_vars
 {
 	void *mlx;
 	void *win;
+	char **map;
+	int collec_count;
+	int mov_count;
+	int x;
+	int y;
+	int block_size;
+	void *wall_img;
+	void *player_img;
+	void *exit_img;
+	void *collect_img;
+	void *floor_img;
 } t_vars;
 
 typedef struct s_point
@@ -93,5 +123,6 @@ int is_playable(char **map);
 int is_rectangle(char **map);
 int is_surrounded_by_walls(char **map);
 int is_valid_map(char **map);
+t_point get_position(char **map, char c);
 
 #endif
