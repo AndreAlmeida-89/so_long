@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:27:11 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:32:26 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	draw_map(t_vars vars)
 		{
 			mlx_put_image_to_window(
 				vars.mlx, vars.win,
-				get_img(vars, vars.map[i / 80][j / 80]),
+				get_img(vars, vars.map[i / vars.block_size][j / vars.block_size]),
 				j, i);
 			j += vars.block_size;
 		}
@@ -130,9 +130,9 @@ int	main(int argc, char **argv)
 	vars.mov_count = 0;
 	vars.collec_count = count_number_of_chars(map, COLLECTABLE);
 	vars.mlx = mlx_init();
-	vars.x = ft_strlen(*map) * 80;
-	vars.y = str_tab_len(map) * 80;
-	vars.block_size = 80;
+	vars.block_size = 48;
+	vars.x = ft_strlen(*map) * vars.block_size;
+	vars.y = str_tab_len(map) * vars.block_size;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
 	vars.wall_img = mlx_xpm_file_to_image(
 			vars.mlx,
