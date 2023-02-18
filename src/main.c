@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 19:29:21 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:48:48 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,20 @@ int	handle_destroy(t_vars *vars)
 
 void	move_from_to(t_vars *vars, t_point a, t_point b)
 {
+	if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
+	{
+		vars->mov_count++;
+		printf("Movments: %d\n", vars->mov_count);
+		handle_destroy(vars);
+		return ;
+	}
 	if (b.x < str_tab_len(vars->map)
 		&& b.y < (int)ft_strlen(*(vars->map))
-		&& vars->map[b.x][b.y] != '1')
+		&& vars->map[b.x][b.y] != WALL
+		&& vars->map[b.x][b.y] != EXIT)
 	{
 		if (vars->map[b.x][b.y] == COLLECTABLE)
 			vars->collec_count--;
-		if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
-			handle_destroy(vars);
 		vars->map[a.x][a.y] = EMPTY;
 		vars->map[b.x][b.y] = PLAYER;
 		vars->mov_count++;
