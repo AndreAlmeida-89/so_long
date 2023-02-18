@@ -6,15 +6,15 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/01/22 17:52:42 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:18:53 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 #define SO_LONG_H
 
-#include "libft/libft.h"
-#include "mlx/mlx.h"
+#include "../libft/libft.h"
+#include "../mlx/mlx.h"
 #include <math.h>
 #include <stdio.h>
 #include <unistd.h>
