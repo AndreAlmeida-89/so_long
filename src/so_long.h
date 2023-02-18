@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 19:23:49 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:02:01 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,16 @@ typedef struct s_vars
 	void	*mlx;
 	void	*win;
 	char	**map;
-	int		collec_count;
-	int		mov_count;
-	int		x;
-	int		y;
-	int		block_size;
 	void	*wall_img;
 	void	*player_img;
 	void	*exit_img;
 	void	*collect_img;
 	void	*floor_img;
+	int		collec_count;
+	int		mov_count;
+	int		x;
+	int		y;
+	int		block_size;
 }	t_vars;
 
 typedef struct s_point

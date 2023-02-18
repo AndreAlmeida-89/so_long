@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 19:48:48 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:01:06 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,14 @@ t_point	get_position(char **map, char c)
 int	handle_destroy(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
+	free(vars->collect_img);
+	free(vars->player_img);
+	free(vars->exit_img);
+	free(vars->floor_img);
+	free(vars->wall_img);
+	while (*vars->map)
+		free(*vars->map++);
+	free(vars);
 	ft_putendl_fd("Game closed", 1);
 	exit(0);
 }
