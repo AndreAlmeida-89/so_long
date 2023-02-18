@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:58:51 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:23:49 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define PLAYER_IMG "img/player1.xpm"
 # define WALL_IMG "img/wall.xpm"
 # define EXIT_IMG "img/exit.xpm"
-# define COLLECT_IMG "img/crystal.xpm"
+# define COLLECT_IMG "img/collect.xpm"
 # define FLOOR_IMG "img/floor.xpm"
 
 typedef enum e_event

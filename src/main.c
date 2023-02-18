@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:32:26 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 19:29:21 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	draw_map(t_vars vars)
 		{
 			mlx_put_image_to_window(
 				vars.mlx, vars.win,
-				get_img(vars, vars.map[i / vars.block_size][j / vars.block_size]),
+				get_img(vars,
+					vars.map[i / vars.block_size][j / vars.block_size]),
 				j, i);
 			j += vars.block_size;
 		}
@@ -115,6 +116,35 @@ int	handle_key_pressed(int keycode, t_vars *vars)
 	return (0);
 }
 
+void	load_images(t_vars *vars)
+{
+	vars->wall_img = mlx_xpm_file_to_image(
+			vars->mlx,
+			WALL_IMG,
+			&vars->block_size,
+			&vars->block_size);
+	vars->player_img = mlx_xpm_file_to_image(
+			vars->mlx,
+			PLAYER_IMG,
+			&vars->block_size,
+			&vars->block_size);
+	vars->exit_img = mlx_xpm_file_to_image(
+			vars->mlx,
+			EXIT_IMG,
+			&vars->block_size,
+			&vars->block_size);
+	vars->collect_img = mlx_xpm_file_to_image(
+			vars->mlx,
+			COLLECT_IMG,
+			&vars->block_size,
+			&vars->block_size);
+	vars->floor_img = mlx_xpm_file_to_image(
+			vars->mlx,
+			FLOOR_IMG,
+			&vars->block_size,
+			&vars->block_size);
+}
+
 int	main(int argc, char **argv)
 {
 	char	**map;
@@ -134,31 +164,7 @@ int	main(int argc, char **argv)
 	vars.x = ft_strlen(*map) * vars.block_size;
 	vars.y = str_tab_len(map) * vars.block_size;
 	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
-	vars.wall_img = mlx_xpm_file_to_image(
-			vars.mlx,
-			WALL_IMG,
-			&vars.block_size,
-			&vars.block_size);
-	vars.player_img = mlx_xpm_file_to_image(
-			vars.mlx,
-			PLAYER_IMG,
-			&vars.block_size,
-			&vars.block_size);
-	vars.exit_img = mlx_xpm_file_to_image(
-			vars.mlx,
-			EXIT_IMG,
-			&vars.block_size,
-			&vars.block_size);
-	vars.collect_img = mlx_xpm_file_to_image(
-			vars.mlx,
-			COLLECT_IMG,
-			&vars.block_size,
-			&vars.block_size);
-	vars.floor_img = mlx_xpm_file_to_image(
-			vars.mlx,
-			FLOOR_IMG,
-			&vars.block_size,
-			&vars.block_size);
+	load_images(&vars);
 	draw_map(vars);
 	mlx_key_hook(vars.win, handle_key_pressed, &vars);
 	mlx_hook(vars.win, ON_DESTROY, 1L << 0, handle_destroy, &vars);
