@@ -6,13 +6,13 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:39:35 by andde-so          #+#    #+#             */
-/*   Updated: 2023/01/15 11:05:05 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:10:52 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int is_valid_map(char **map)
+int	is_valid_map(char **map)
 {
 	if (!is_rectangle(map))
 		return (print_error("The map must be rectangular."));

@@ -10,7 +10,6 @@ SRC =		src/main.c 							\
 			src/is_valid_map.c					\
 			src/create_map.c					\
 
-
 NAME	=	so_long
 
 OBJ		=	$(SRC:.c=.o)
@@ -21,18 +20,21 @@ RM		=	rm -f
 
 CFLAGS	=	-Wall -Wextra -Werror
 
-%.o: %.c
-	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+%.o:		%.c
+			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): 	$(OBJ)
+			@make -C libft
 			$(CC) $(OBJ) -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all:		$(NAME)
 
 clean:
+			@make -C libft clean
 			$(RM) $(OBJ)
 
 fclean:		clean
+			@make -C libft fclean
 			$(RM) $(NAME)
 
 re:			fclean all
