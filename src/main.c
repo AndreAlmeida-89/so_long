@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 20:01:06 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:06:04 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,15 @@ void	*get_img(t_vars vars, t_content content)
 	return (NULL);
 }
 
+void	draw_block(t_vars vars, t_point p)
+{
+	mlx_put_image_to_window(
+		vars.mlx, vars.win,
+		get_img(vars, vars.map[p.x][p.y]),
+		p.y * vars.block_size,
+		p.x * vars.block_size);
+}
+
 void	draw_map(t_vars vars)
 {
 	int	i;
@@ -38,11 +47,10 @@ void	draw_map(t_vars vars)
 		j = 0;
 		while (j < vars.x)
 		{
-			mlx_put_image_to_window(
-				vars.mlx, vars.win,
-				get_img(vars,
-					vars.map[i / vars.block_size][j / vars.block_size]),
-				j, i);
+			draw_block(
+				vars,
+				(t_point){i / vars.block_size, j / vars.block_size}
+				);
 			j += vars.block_size;
 		}
 		i += vars.block_size;
@@ -81,7 +89,6 @@ int	handle_destroy(t_vars *vars)
 	free(vars->wall_img);
 	while (*vars->map)
 		free(*vars->map++);
-	free(vars);
 	ft_putendl_fd("Game closed", 1);
 	exit(0);
 }
@@ -106,7 +113,8 @@ void	move_from_to(t_vars *vars, t_point a, t_point b)
 		vars->map[b.x][b.y] = PLAYER;
 		vars->mov_count++;
 		printf("Movments: %d\n", vars->mov_count);
-		draw_map(*vars);
+		draw_block(*vars, a);
+		draw_block(*vars, b);
 	}
 }
 
