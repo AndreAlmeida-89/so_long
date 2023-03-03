@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:18:19 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:11:54 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/03/03 12:26:52 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_extention(const char *path, const char *extension)
 	return (ft_strncmp(dot + 1, extension, ft_strlen(dot + 1)) == 0);
 }
 
-char	**read_file(const char *path)
+char	**parse_file(const char *path)
 {
 	char	**map;
 	char	*buffer;

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 20:02:01 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:38:51 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
+# include "../get_next_line/get_next_line.h"
 # include <math.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -111,7 +112,7 @@ typedef struct s_map
 }	t_map;
 
 int		print_error(char *str);
-char	**read_file(const char *path);
+char	**parse_file(const char *path);
 int		str_tab_len(char **tab);
 size_t	count_chars(char *str, char c);
 int		count_number_of_chars(char **map, char c);

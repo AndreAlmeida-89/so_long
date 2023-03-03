@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 21:06:04 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:39:28 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (1);
-	map = read_file(argv[1]);
+	map = parse_file(argv[1]);
 	if (!*map)
 		return (1);
 	printf("MAP IS VALID: %d\n", is_valid_map(map));

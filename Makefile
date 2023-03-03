@@ -1,6 +1,6 @@
 SRC =		src/main.c 							\
 			src/print_error.c 					\
-			src/read_file.c						\
+			src/parse_file.c					\
 			src/str_tab_utils.c					\
 			src/contains_only.c 				\
 			src/has_valid_number_of_objects.c	\
@@ -9,6 +9,8 @@ SRC =		src/main.c 							\
 			src/is_surrounded_by_walls.c		\
 			src/is_valid_map.c					\
 			src/create_map.c					\
+			get_next_line/get_next_line.c		\
+			get_next_line/get_next_line_utils.c	\
 
 NAME	=	so_long
 
