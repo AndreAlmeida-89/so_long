@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/03/03 10:38:51 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/03/07 09:49:07 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,22 +94,6 @@ typedef struct s_point
 	int	x;
 	int	y;
 }	t_point;
-
-typedef struct s_block
-{
-	t_content	content;
-	t_point		position;
-	int			is_showing_player;
-}	t_block;
-
-typedef struct s_map
-{
-	int		collectable_count;
-	int		width;
-	int		height;
-	int		mov_count;
-	t_block	**blocks;
-}	t_map;
 
 int		print_error(char *str);
 char	**parse_file(const char *path);

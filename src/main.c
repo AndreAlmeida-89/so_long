@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/03/03 10:39:28 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/03/07 09:48:58 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	handle_destroy(t_vars *vars)
 
 void	move_from_to(t_vars *vars, t_point a, t_point b)
 {
+	static int exit_flag = 0;
+
 	if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
 	{
 		vars->mov_count++;
@@ -104,12 +106,19 @@ void	move_from_to(t_vars *vars, t_point a, t_point b)
 	}
 	if (b.x < str_tab_len(vars->map)
 		&& b.y < (int)ft_strlen(*(vars->map))
-		&& vars->map[b.x][b.y] != WALL
-		&& vars->map[b.x][b.y] != EXIT)
+		&& vars->map[b.x][b.y] != WALL)
 	{
 		if (vars->map[b.x][b.y] == COLLECTABLE)
 			vars->collec_count--;
-		vars->map[a.x][a.y] = EMPTY;
+		if (exit_flag)
+		{
+			vars->map[a.x][a.y] = EXIT;
+			exit_flag = 0;
+		}
+		else
+			vars->map[a.x][a.y] = EMPTY;
+		if (vars->map[b.x][b.y] == EXIT)
+			exit_flag++;
 		vars->map[b.x][b.y] = PLAYER;
 		vars->mov_count++;
 		printf("Movments: %d\n", vars->mov_count);
