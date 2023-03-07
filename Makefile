@@ -8,7 +8,6 @@ SRC =		src/main.c 							\
 			src/is_rectangle.c					\
 			src/is_surrounded_by_walls.c		\
 			src/is_valid_map.c					\
-			src/create_map.c					\
 			get_next_line/get_next_line.c		\
 			get_next_line/get_next_line_utils.c	\
 
