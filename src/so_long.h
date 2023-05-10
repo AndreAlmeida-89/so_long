@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/03/07 09:49:07 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/07 11:58:43 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
-# include "../get_next_line/get_next_line.h"
+# include "../gnl/get_next_line.h"
 # include <math.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -28,6 +28,7 @@
 # define EXIT_IMG "img/exit.xpm"
 # define COLLECT_IMG "img/collect.xpm"
 # define FLOOR_IMG "img/floor.xpm"
+# define BUFF_SIZE 1024
 
 typedef enum e_event
 {

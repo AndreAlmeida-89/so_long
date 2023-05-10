@@ -8,8 +8,8 @@ SRC =		src/main.c 							\
 			src/is_rectangle.c					\
 			src/is_surrounded_by_walls.c		\
 			src/is_valid_map.c					\
-			get_next_line/get_next_line.c		\
-			get_next_line/get_next_line_utils.c	\
+			gnl/get_next_line.c					\
+			gnl/get_next_line_utils.c			\
 
 NAME	=	so_long
 
@@ -25,13 +25,15 @@ CFLAGS	=	-Wall -Wextra -Werror
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
 $(NAME): 	$(OBJ)
-			@make -C libft
+			@make bonus -C libft
+			@make -C mlx
 			$(CC) $(OBJ) -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all:		$(NAME)
 
 clean:
 			@make -C libft clean
+			@make -C mlx clean
 			$(RM) $(OBJ)
 
 fclean:		clean

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/03/07 09:48:58 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/10 20:42:34 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_point	get_position(char **map, char c)
 	int	has_found;
 
 	row = 0;
+    col = 0;
 	has_found = 0;
 	while (map[row] && !has_found)
 	{
@@ -192,9 +193,12 @@ int	main(int argc, char **argv)
 	vars.collec_count = count_number_of_chars(map, COLLECTABLE);
 	vars.mlx = mlx_init();
 	vars.block_size = 48;
-	vars.x = ft_strlen(*map) * vars.block_size;
+	vars.x = (int)ft_strlen(*map) * vars.block_size;
 	vars.y = str_tab_len(map) * vars.block_size;
-	vars.win = mlx_new_window(vars.mlx, vars.x, vars.y, "Hello world!");
+	vars.win = mlx_new_window(vars.mlx,
+			vars.x,
+			vars.y,
+			"so_long - 42 School - andde-so");
 	load_images(&vars);
 	draw_map(vars);
 	mlx_key_hook(vars.win, handle_key_pressed, &vars);
