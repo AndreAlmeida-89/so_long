@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:36:04 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:11:17 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 14:29:32 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	is_rectangle(char **map)
 
 	if (!*map)
 		return (0);
-	len = strlen(*map);
+	len = ft_strlen(*map);
 	while (*++map)
-		if (strlen(*map) != len)
+		if (ft_strlen(*map) != len)
 			return (0);
 	return (1);
 }

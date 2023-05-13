@@ -12,8 +12,6 @@ SRC =		src/main.c 							\
 			src/is_surrounded_by_walls.c		\
 			src/handle_destroy.c				\
 			src/is_valid_map.c					\
-			gnl/get_next_line.c					\
-			gnl/get_next_line_utils.c			\
 
 NAME	=	so_long
 
