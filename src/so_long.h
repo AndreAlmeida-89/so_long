@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:17:49 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 10:27:13 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-int		print_error(char *str, t_vars *vars);
+int		print_error(char *str, char **map);
 char	**parse_file(const char *path);
 int		str_tab_len(char **tab);
 size_t	count_chars(char *str, char c);
@@ -111,5 +111,6 @@ int		is_surrounded_by_walls(char **map);
 int		is_valid_map(char **map);
 t_point	get_position(char **map, char c);
 int		handle_destroy(t_vars *vars);
+void	free_tab(char **tab);
 
 #endif

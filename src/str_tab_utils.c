@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:33:27 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:10:02 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 10:26:54 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,17 @@ char	**cpy_tab(char **tab)
 		i++;
 	}
 	return (cpy);
+}
+
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	if (tab)
+	{
+		while (tab[i])
+			free(tab[i++]);
+		free(tab);
+	}
 }
