@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:38:37 by andde-so          #+#    #+#             */
-/*   Updated: 2023/02/18 18:13:56 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:31:12 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	is_playable(char **map)
 	}
 	mark_reachable_path(cpy, row - 1, col - 1);
 	is_playable = contains_only(cpy, (t_content *)"01X");
-	while (*cpy)
-		free(*cpy++);
+	free_tab(cpy);
 	return (is_playable);
 }

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:33:27 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:40:03 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:34:13 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	str_tab_len(char **tab)
 	int	len;
 
 	len = 0;
-	while (*tab++)
+	while (tab[len])
 		len++;
 	return (len);
 }
@@ -45,21 +45,16 @@ int	count_number_of_chars(char **map, char c)
 
 char	**cpy_tab(char **tab)
 {
-	char	**cpy;
-	size_t	len;
 	int		i;
+	int		j;
+	char	**new_tab;
 
-	len = str_tab_len(tab) * ft_strlen(*tab) * sizeof(char);
-	cpy = malloc(len);
-	if (!cpy)
-		return (NULL);
-	i = 0;
-	while (tab[i])
-	{
-		cpy[i] = ft_strdup(tab[i]);
-		i++;
-	}
-	return (cpy);
+	i = str_tab_len(tab);
+	new_tab = ft_calloc(i, sizeof(char *));
+	j = -1;
+	while (++j < i)
+		new_tab[j] = ft_strdup(tab[j]);
+	return (new_tab);
 }
 
 void	free_tab(char **tab)
