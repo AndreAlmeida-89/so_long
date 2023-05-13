@@ -1,4 +1,7 @@
 SRC =		src/main.c 							\
+			src/init_game.c						\
+			src/draw.c							\
+			src/handle_key_pressed.c			\
 			src/print_error.c 					\
 			src/parse_file.c					\
 			src/str_tab_utils.c					\

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:07:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:30:04 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:51:20 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	handle_destroy(t_vars *vars)
 {
-
 	mlx_destroy_window(vars->mlx, vars->win);
 	mlx_destroy_image(vars->mlx, vars->collect_img);
 	mlx_destroy_image(vars->mlx, vars->player_img);

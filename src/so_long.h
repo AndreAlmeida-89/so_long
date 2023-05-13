@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:27:13 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:33:13 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define EXIT_IMG "img/exit.xpm"
 # define COLLECT_IMG "img/collect.xpm"
 # define FLOOR_IMG "img/floor.xpm"
-# define BUFF_SIZE 1024
+# define BUFF_SIZE 1
 
 typedef enum e_event
 {
@@ -109,8 +109,11 @@ int		is_playable(char **map);
 int		is_rectangle(char **map);
 int		is_surrounded_by_walls(char **map);
 int		is_valid_map(char **map);
-t_point	get_position(char **map, char c);
 int		handle_destroy(t_vars *vars);
 void	free_tab(char **tab);
+void	init_game(t_vars *vars, char **map);
+void	draw_block(t_vars vars, t_point p);
+void	draw_map(t_vars vars);
+int		handle_key_pressed(int keycode, t_vars *vars);
 
 #endif
