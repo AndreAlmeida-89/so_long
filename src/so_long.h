@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/07 11:58:43 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 10:14:11 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ int		is_rectangle(char **map);
 int		is_surrounded_by_walls(char **map);
 int		is_valid_map(char **map);
 t_point	get_position(char **map, char c);
+int		handle_destroy(t_vars *vars);
 
 #endif
