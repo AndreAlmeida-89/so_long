@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:33:27 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 16:34:13 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:12:24 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**cpy_tab(char **tab)
 	char	**new_tab;
 
 	i = str_tab_len(tab);
-	new_tab = ft_calloc(i, sizeof(char *));
+	new_tab = ft_calloc(i + 1, sizeof(char *));
 	j = -1;
 	while (++j < i)
 		new_tab[j] = ft_strdup(tab[j]);
