@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 12:31:26 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:45:18 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_point	get_position(char **map, char c)
 	int	has_found;
 
 	row = 0;
-    col = 0;
+	col = 0;
 	has_found = 0;
 	while (map[row] && !has_found)
 	{
@@ -37,26 +37,18 @@ static t_point	get_position(char **map, char c)
 
 static void	move_from_to(t_vars *vars, t_point a, t_point b)
 {
-	static int exit_flag = 0;
+	static int	exit_flag = 0;
 
 	if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
-	{
-		vars->mov_count++;
-		printf("Movments: %d\n", vars->mov_count);
 		handle_destroy(vars);
-		return ;
-	}
 	if (b.x < str_tab_len(vars->map)
 		&& b.y < (int)ft_strlen(*(vars->map))
 		&& vars->map[b.x][b.y] != WALL)
 	{
 		if (vars->map[b.x][b.y] == COLLECTABLE)
 			vars->collec_count--;
-		if (exit_flag)
-		{
+		if (exit_flag && exit_flag--)
 			vars->map[a.x][a.y] = EXIT;
-			exit_flag = 0;
-		}
 		else
 			vars->map[a.x][a.y] = EMPTY;
 		if (vars->map[b.x][b.y] == EXIT)

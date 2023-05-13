@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 12:30:49 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:33:51 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	map = parse_file(argv[1]);
 	if (!*map)
 		return (1);
-	printf("MAP IS VALID: %d\n", is_valid_map(map));
 	init_game(&vars, map);
 	draw_map(vars);
 	mlx_key_hook(vars.win, handle_key_pressed, &vars);

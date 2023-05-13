@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 12:33:13 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 12:35:34 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define EXIT_IMG "img/exit.xpm"
 # define COLLECT_IMG "img/collect.xpm"
 # define FLOOR_IMG "img/floor.xpm"
-# define BUFF_SIZE 1
+# define BUFF_SIZE 9
 
 typedef enum e_event
 {
@@ -63,15 +63,6 @@ typedef enum e_content
 	EXIT = 'E',
 	MARK = 'X'
 }				t_content;
-
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
 
 typedef struct s_vars
 {
