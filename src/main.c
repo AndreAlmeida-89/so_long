@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:07:00 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 10:20:15 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,6 @@ int	handle_key_pressed(int keycode, t_vars *vars)
 		move_from_to(vars, p, (t_point){p.x, p.y + 1});
 	else if (keycode == ESC_KEY)
 		handle_destroy(vars);
-	else
-		printf("Keycode: %d\n", keycode);
 	return (0);
 }
 

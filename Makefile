@@ -43,4 +43,7 @@ fclean:		clean
 
 re:			fclean all
 
+run:	all
+		./$(NAME) maps/map0.ber
+
 .PHONY:		all clean fclean re

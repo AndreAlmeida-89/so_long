@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 10:14:11 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/13 10:17:49 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-int		print_error(char *str);
+int		print_error(char *str, t_vars *vars);
 char	**parse_file(const char *path);
 int		str_tab_len(char **tab);
 size_t	count_chars(char *str, char c);
