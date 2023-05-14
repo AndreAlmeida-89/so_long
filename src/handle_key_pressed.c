@@ -6,34 +6,11 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 12:45:18 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/14 17:58:08 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static t_point	get_position(char **map, char c)
-{
-	int	row;
-	int	col;
-	int	has_found;
-
-	row = 0;
-	col = 0;
-	has_found = 0;
-	while (map[row] && !has_found)
-	{
-		col = 0;
-		while (map[row][col] && !has_found)
-		{
-			if (map[row][col] == c && has_found++)
-				break ;
-			col++;
-		}
-		row++;
-	}
-	return ((t_point){row - 1, col - 1});
-}
 
 static void	move_from_to(t_vars *vars, t_point a, t_point b)
 {

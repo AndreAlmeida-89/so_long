@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 10:38:37 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/13 16:31:12 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:01:08 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,17 @@ void	mark_reachable_path(char **map, int row, int col)
 
 int	is_playable(char **map)
 {
-	char	**cpy;
-	int		row;
-	int		col;
-	int		found_player;
+	char	**map_copy;
 	int		is_playable;
+	t_point	player_position;
 
-	found_player = 0;
-	cpy = cpy_tab(map);
-	row = 0;
-	while (cpy[row] && !found_player)
-	{
-		col = 0;
-		while (cpy[row][col] && !found_player)
-		{
-			if (cpy[row][col] == PLAYER && found_player++)
-				break ;
-			col++;
-		}
-		row++;
-	}
-	mark_reachable_path(cpy, row - 1, col - 1);
-	is_playable = contains_only(cpy, (t_content *)"01X");
-	free_tab(cpy);
+	map_copy = cpy_tab(map);
+	player_position = get_position(map_copy, PLAYER);
+	mark_reachable_path(
+		map_copy,
+		player_position.x,
+		player_position.y);
+	is_playable = contains_only(map_copy, (t_content *)"01X");
+	free_tab(map_copy);
 	return (is_playable);
 }
