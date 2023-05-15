@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 10:07:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 00:17:27 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:42:49 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	handle_destroy(t_vars *vars)
 	mlx_destroy_image(vars->mlx, vars->enemy_img[0]);
 	mlx_destroy_image(vars->mlx, vars->enemy_img[1]);
 	free_tab(vars->map);
-	ft_putendl_fd("Game closed", 1);
 	exit(0);
 }

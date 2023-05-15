@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:53:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 12:21:59 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:09:51 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,12 @@ static	void	draw_map(t_vars vars)
 
 int	loop_hook(t_vars *vars)
 {
+	static int	frame_count = 0;
+
+	if (frame_count > SPRITE_FRAMES)
+		frame_count = 0;
+	vars->current_enemy_img = frame_count < (SPRITE_FRAMES / ENEMY_IMG_COUNT);
 	draw_map(*vars);
-	vars->current_enemy_img = (vars->current_enemy_img + 1) % ENEMY_IMG_COUNT;
-	usleep(10000);
+	frame_count++;
 	return (0);
 }

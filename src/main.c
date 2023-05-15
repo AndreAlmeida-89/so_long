@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 12:21:41 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:40:44 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 	if (is_valid_map(map) == 0)
 		return (1);
 	init_game(&vars, map);
+	mlx_loop_hook(vars.mlx, loop_hook, &vars);
 	mlx_key_hook(vars.win, handle_key_pressed, &vars);
 	mlx_hook(vars.win, ON_DESTROY, 1L << 0, handle_destroy, &vars);
-	mlx_loop_hook(vars.mlx, loop_hook, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

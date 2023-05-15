@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 12:23:40 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:01:51 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define ENEMY1_IMG "img/enemy1.xpm"
 # define ENEMY2_IMG "img/enemy2.xpm"
 # define ENEMY_IMG_COUNT 2
+# define SPRITE_FRAMES 16
 # define BUFF_SIZE 1024
 
 typedef enum e_event
