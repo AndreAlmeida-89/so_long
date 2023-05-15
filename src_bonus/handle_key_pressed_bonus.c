@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_pressed.c                               :+:      :+:    :+:   */
+/*   handle_key_pressed_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/14 23:21:27 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 10:26:23 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 static void	move_from_to(t_vars *vars, t_point a, t_point b)
 {
 	static int	exit_flag = 0;
 
-	if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
+	if ((vars->map[b.x][b.y] == EXIT && vars->collec_count == 0) ||
+		vars->map[b.x][b.y] == ENEMY)
 		handle_destroy(vars);
 	if (b.x < str_tab_len(vars->map)
 		&& b.y < (int)ft_strlen(*(vars->map))
@@ -35,8 +36,6 @@ static void	move_from_to(t_vars *vars, t_point a, t_point b)
 		ft_putstr_fd("Movments: ", 1);
 		ft_putnbr_fd(vars->mov_count, 1);
 		ft_putstr_fd("\n", 1);
-		draw_block(*vars, a);
-		draw_block(*vars, b);
 	}
 }
 

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/14 23:33:37 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 10:25:23 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
@@ -24,6 +24,9 @@
 # define EXIT_IMG "img/exit.xpm"
 # define COLLECT_IMG "img/collect.xpm"
 # define FLOOR_IMG "img/floor.xpm"
+# define ENEMY1_IMG "img/enemy1.xpm"
+# define ENEMY2_IMG "img/enemy2.xpm"
+# define ENEMY_IMG_COUNT 2
 # define BUFF_SIZE 1024
 
 typedef enum e_event
@@ -57,6 +60,7 @@ typedef enum e_content
 	PLAYER = 'P',
 	COLLECTABLE = 'C',
 	EXIT = 'E',
+	ENEMY = '2',
 	MARK = 'X'
 }				t_content;
 
@@ -70,6 +74,8 @@ typedef struct s_vars
 	void	*exit_img;
 	void	*collect_img;
 	void	*floor_img;
+	void	*enemy_img[ENEMY_IMG_COUNT];
+	int		current_enemy_img;
 	int		collec_count;
 	int		mov_count;
 	int		x;
@@ -103,5 +109,6 @@ void	draw_block(t_vars vars, t_point p);
 void	draw_map(t_vars vars);
 int		handle_key_pressed(int keycode, t_vars *vars);
 t_point	get_position(char **map, char c);
+int		loop_hook(t_vars *vars);
 
 #endif
