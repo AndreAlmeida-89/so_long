@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/14 23:33:37 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:17:25 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ void	draw_block(t_vars vars, t_point p);
 void	draw_map(t_vars vars);
 int		handle_key_pressed(int keycode, t_vars *vars);
 t_point	get_position(char **map, char c);
+int		loop_hook(t_vars *vars);
 
 #endif

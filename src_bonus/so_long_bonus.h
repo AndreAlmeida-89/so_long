@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 10:25:23 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:23:40 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,6 @@ int		is_valid_map(char **map);
 int		handle_destroy(t_vars *vars);
 void	free_tab(char **tab);
 void	init_game(t_vars *vars, char **map);
-void	draw_block(t_vars vars, t_point p);
-void	draw_map(t_vars vars);
 int		handle_key_pressed(int keycode, t_vars *vars);
 t_point	get_position(char **map, char c);
 int		loop_hook(t_vars *vars);

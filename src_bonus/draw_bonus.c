@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:53:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 10:24:40 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 12:21:59 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	draw_block(t_vars vars, t_point p)
 		p.x * vars.block_size);
 }
 
-void	draw_map(t_vars vars)
+static	void	draw_map(t_vars vars)
 {
 	int	i;
 	int	j;

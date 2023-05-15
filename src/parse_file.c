@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:18:19 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/14 17:52:12 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 11:28:13 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ char	**parse_file(const char *path)
 
 	if (!check_extention(path, "ber"))
 		print_error("Invalid file extension.", NULL);
+	ft_bzero(buffer, BUFF_SIZE);
 	fd = open(path, O_RDONLY);
-	if (fd < 0)
+	if (fd < 0 || read(fd, buffer, BUFF_SIZE) < 0)
 	{
 		print_error("File can not be read.", NULL);
 		close(fd);
 	}
-	read(fd, buffer, BUFF_SIZE);
 	map = ft_split(buffer, '\n');
 	if (!*map)
 		print_error("Empty file.", map);

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/14 23:21:27 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:34:14 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,27 @@
 
 static void	move_from_to(t_vars *vars, t_point a, t_point b)
 {
-	static int	exit_flag = 0;
+	static t_content	last_content = EMPTY;
+	t_content			temp;
 
-	if (vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
-		handle_destroy(vars);
 	if (b.x < str_tab_len(vars->map)
 		&& b.y < (int)ft_strlen(*(vars->map))
-		&& vars->map[b.x][b.y] != WALL)
+		&& vars->map[b.x][b.y] != WALL
+		&& ++(vars->mov_count))
 	{
-		if (vars->map[b.x][b.y] == COLLECTABLE)
-			vars->collec_count--;
-		if (exit_flag && exit_flag--)
-			vars->map[a.x][a.y] = EXIT;
-		else
-			vars->map[a.x][a.y] = EMPTY;
-		if (vars->map[b.x][b.y] == EXIT)
-			exit_flag++;
-		vars->map[b.x][b.y] = PLAYER;
-		vars->mov_count++;
-		ft_putstr_fd("Movments: ", 1);
+		ft_putstr_fd("Number of movements: ", 1);
 		ft_putnbr_fd(vars->mov_count, 1);
 		ft_putstr_fd("\n", 1);
-		draw_block(*vars, a);
-		draw_block(*vars, b);
+		if (vars->map[b.x][b.y] == EXIT
+			&& vars->collec_count == 0)
+			handle_destroy(vars);
+		if (vars->map[b.x][b.y] == COLLECTABLE
+			&& vars->collec_count--)
+			vars->map[b.x][b.y] = EMPTY;
+		temp = vars->map[b.x][b.y];
+		vars->map[a.x][a.y] = last_content;
+		vars->map[b.x][b.y] = PLAYER;
+		last_content = temp;
 	}
 }
 
