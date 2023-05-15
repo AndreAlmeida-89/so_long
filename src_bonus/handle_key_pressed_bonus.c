@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 13:35:39 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:30:55 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,8 @@ static void	move_from_to(t_vars *vars, t_point a, t_point b)
 		&& vars->map[b.x][b.y] != WALL
 		&& ++(vars->mov_count))
 	{
-		ft_putstr_fd("Number of movements: ", 1);
-		ft_putnbr_fd(vars->mov_count, 1);
-		ft_putstr_fd("\n", 1);
-		if (((vars->map[b.x][b.y] == EXIT && vars->collec_count == 0)
+		if (((vars->map[b.x][b.y] == EXIT
+				&& vars->collec_count == 0)
 			|| (vars->map[b.x][b.y] == ENEMY)) &&
 			vars->mov_count++)
 			handle_destroy(vars);

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:53:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 15:09:51 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/15 16:33:14 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,24 @@ static	void	draw_map(t_vars vars)
 	}
 }
 
+static void	write_movements_count(t_vars *vars)
+{
+	char	*str;
+	char	*str2;
+
+	str = ft_itoa(vars->mov_count);
+	str2 = ft_strjoin("Moves: ", str);
+	mlx_string_put(
+		vars->mlx,
+		vars->win,
+		5,
+		10,
+		0xFF0000,
+		str2);
+	free(str);
+	free(str2);
+}
+
 int	loop_hook(t_vars *vars)
 {
 	static int	frame_count = 0;
@@ -68,6 +86,7 @@ int	loop_hook(t_vars *vars)
 		frame_count = 0;
 	vars->current_enemy_img = frame_count < (SPRITE_FRAMES / ENEMY_IMG_COUNT);
 	draw_map(*vars);
+	write_movements_count(vars);
 	frame_count++;
 	return (0);
 }
