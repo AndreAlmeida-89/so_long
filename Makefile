@@ -32,9 +32,11 @@ SRC_B =		src_bonus/main_bonus.c 							\
 
 NAME	=	so_long
 
-OBJ		=	$(SRC:.c=.o)
+NAME_B	=	so_long_bonus
 
-OBJ_B	=	$(SRC_B:.c=.o)
+OBJ		=	$(SRC:%.c=%.o)
+
+OBJ_B	=	$(SRC_B:%.c=%_b.o)
 
 CC		=	gcc
 
@@ -49,12 +51,22 @@ LIBS	=	-Llibft -lft -Lmlx -lmlx
 %.o:		%.c
 			$(CC) $(CFLAGS) -Imlx -c $< -o $@
 
-$(NAME): 	$(OBJ)
-			@make bonus -C libft
+%_b.o: 		%.c
+			$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
+$(NAME):	$(OBJ)
+			@make -C libft
 			@make -C mlx
 			$(CC) $(OBJ) $(LIBS) $(FM) -o $(NAME)
 
+$(NAME_B):		$(OBJ_B)
+			@make -C libft
+			@make -C mlx
+			$(CC) $(OBJ_B) $(LIBS) $(FM) -o $(NAME_B)
+
 all:		$(NAME)
+
+bonus:		$(NAME_B)
 
 clean:
 			@make -C libft clean
@@ -63,17 +75,10 @@ clean:
 
 
 fclean:		clean
-			@make -C libft fclean
-			$(RM) $(NAME)
+			$(RM) $(NAME) $(NAME_B)
 
 re:			fclean all
 
-run:	all
-		./$(NAME) maps/map0.ber
 
-bonus: 		$(OBJ_B)
-			@make bonus -C libft
-			@make -C mlx
-			$(CC) $(OBJ_B) $(LIBS) $(FM) -o $(NAME)
 
 .PHONY:		all clean fclean re
