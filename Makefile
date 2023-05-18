@@ -59,7 +59,7 @@ $(NAME):	$(OBJ)
 			@make -C mlx
 			$(CC) $(OBJ) $(LIBS) $(FM) -o $(NAME)
 
-$(NAME_B):		$(OBJ_B)
+$(NAME_B):	$(OBJ_B)
 			@make -C libft
 			@make -C mlx
 			$(CC) $(OBJ_B) $(LIBS) $(FM) -o $(NAME_B)
@@ -73,12 +73,9 @@ clean:
 			@make -C mlx clean
 			$(RM) $(OBJ) $(OBJ_B)
 
-
 fclean:		clean
 			$(RM) $(NAME) $(NAME_B)
 
 re:			fclean all
-
-
 
 .PHONY:		all clean fclean re
