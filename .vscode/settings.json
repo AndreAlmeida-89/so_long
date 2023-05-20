@@ -6,6 +6,7 @@
 		"string_view": "c",
 		"vector": "c",
 		"__locale": "c",
-		"so_long.h": "c"
+		"so_long.h": "c",
+		"locale": "c"
 	}
 }
