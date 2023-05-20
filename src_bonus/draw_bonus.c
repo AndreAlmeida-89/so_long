@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:53:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 18:51:15 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:57:53 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static void	*get_img(t_vars vars, t_content content)
 {
 	if (content == PLAYER)
-		return (vars.player_img);
+		return (vars.player_img[vars.current_img_index]);
 	if (content == EXIT)
 		return (vars.exit_img);
 	if (content == COLLECTABLE)
-		return (vars.collect_img);
+		return (vars.collect_img[vars.current_img_index]);
 	if (content == WALL)
 		return (vars.wall_img);
 	if (content == EMPTY)
 		return (vars.floor_img);
 	if (content == ENEMY)
-		return (vars.enemy_img[vars.current_enemy_img]);
+		return (vars.enemy_img[vars.current_img_index]);
 	return (0);
 }
 
@@ -84,7 +84,7 @@ int	loop_hook(t_vars *vars)
 
 	if (frame_count > SPRITE_FRAMES)
 		frame_count = 0;
-	vars->current_enemy_img = frame_count < (SPRITE_FRAMES / ENEMY_IMG_COUNT);
+	vars->current_img_index = frame_count < (SPRITE_FRAMES / IMG_COUNT);
 	draw_map(*vars);
 	put_movements_count(vars);
 	frame_count++;

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:38:18 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/20 12:28:31 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:56:58 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,14 @@ void	init_game(t_vars *vars, char **map)
 			vars->y,
 			"so_long - 42 School - andde-so");
 	vars->wall_img = load_image(vars, WALL_IMG);
-	vars->player_img = load_image(vars, PLAYER_IMG);
-	vars->exit_img = load_image(vars, EXIT_IMG);
-	vars->collect_img = load_image(vars, COLLECT_IMG);
-	vars->floor_img = load_image(vars, FLOOR_IMG);
+	vars->player_img[0] = load_image(vars, PLAYER1_IMG);
+	vars->player_img[1] = load_image(vars, PLAYER2_IMG);
+	vars->collect_img[0] = load_image(vars, COLLECT1_IMG);
+	vars->collect_img[1] = load_image(vars, COLLECT2_IMG);
 	vars->enemy_img[0] = load_image(vars, ENEMY1_IMG);
 	vars->enemy_img[1] = load_image(vars, ENEMY2_IMG);
-	vars->current_enemy_img = 0;
+	vars->exit_img = load_image(vars, EXIT_IMG);
+	vars->floor_img = load_image(vars, FLOOR_IMG);
+	vars->current_img_index = 0;
 	vars->player_pos = get_position(map, PLAYER);
 }
