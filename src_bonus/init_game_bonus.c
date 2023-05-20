@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:38:18 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 09:45:03 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:28:31 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void	init_game(t_vars *vars, char **map)
 	vars->enemy_img[0] = load_image(vars, ENEMY1_IMG);
 	vars->enemy_img[1] = load_image(vars, ENEMY2_IMG);
 	vars->current_enemy_img = 0;
+	vars->player_pos = get_position(map, PLAYER);
 }

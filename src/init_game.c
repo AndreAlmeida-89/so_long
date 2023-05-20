@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:38:18 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 11:30:31 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:10:49 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ void	init_game(t_vars *vars, char **map)
 	vars->exit_img = load_image(vars, EXIT_IMG);
 	vars->collect_img = load_image(vars, COLLECT_IMG);
 	vars->floor_img = load_image(vars, FLOOR_IMG);
+	vars->player_pos = get_position(map, PLAYER);
 }

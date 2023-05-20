@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 12:30:33 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 13:34:14 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:14:37 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	move_from_to(t_vars *vars, t_point a, t_point b)
 		vars->map[a.x][a.y] = last_content;
 		vars->map[b.x][b.y] = PLAYER;
 		last_content = temp;
+		vars->player_pos = b;
 	}
 }
 
@@ -42,7 +43,7 @@ int	handle_key_pressed(int keycode, t_vars *vars)
 {
 	t_point	p;
 
-	p = get_position(vars->map, PLAYER);
+	p = vars->player_pos;
 	if (keycode == W_KEY || keycode == UP_KEY)
 		move_from_to(vars, p, (t_point){p.x - 1, p.y});
 	else if (keycode == A_KEY || keycode == LEFT_KEY)

@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 16:47:15 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 12:30:00 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ typedef enum e_content
 	MARK = 'X'
 }				t_content;
 
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
+
 typedef struct s_vars
 {
 	void	*mlx;
@@ -82,13 +88,8 @@ typedef struct s_vars
 	int		x;
 	int		y;
 	int		block_size;
+	t_point	player_pos;
 }	t_vars;
-
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}	t_point;
 
 int		print_error(char *str, char **map);
 char	**parse_file(const char *path);
