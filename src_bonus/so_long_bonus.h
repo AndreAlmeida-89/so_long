@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/20 14:58:46 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:30:43 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 # define COLLECT2_IMG "img/collect2.xpm"
 # define ENEMY1_IMG "img/enemy1.xpm"
 # define ENEMY2_IMG "img/enemy2.xpm"
+# define EXIT1_IMG "img/exit1.xpm"
+# define EXIT2_IMG "img/exit2.xpm"
 # define WALL_IMG "img/wall.xpm"
-# define EXIT_IMG "img/exit.xpm"
 # define FLOOR_IMG "img/floor.xpm"
 # define IMG_COUNT 2
-# define SPRITE_FRAMES 16
+# define SPRITE_FRAMES 24
 # define BUFF_SIZE 1024
 
 typedef enum e_event
@@ -82,7 +83,7 @@ typedef struct s_vars
 	void	*player_img[IMG_COUNT];
 	void	*enemy_img[IMG_COUNT];
 	void	*collect_img[IMG_COUNT];
-	void	*exit_img;
+	void	*exit_img[IMG_COUNT];
 	void	*floor_img;
 	int		current_img_index;
 	int		collec_count;

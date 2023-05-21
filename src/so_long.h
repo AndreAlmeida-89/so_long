@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 21:44:16 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/20 15:01:22 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:41:53 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define PLAYER_IMG "img/player1.xpm"
 # define WALL_IMG "img/wall.xpm"
-# define EXIT_IMG "img/exit.xpm"
+# define EXIT_IMG "img/exit1.xpm"
 # define COLLECT_IMG "img/collect1.xpm"
 # define FLOOR_IMG "img/floor.xpm"
 # define BUFF_SIZE 1024

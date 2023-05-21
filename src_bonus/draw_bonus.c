@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:53:12 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/20 14:57:53 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:37:25 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	*get_img(t_vars vars, t_content content)
 	if (content == PLAYER)
 		return (vars.player_img[vars.current_img_index]);
 	if (content == EXIT)
-		return (vars.exit_img);
+		return (vars.exit_img[vars.collec_count > 0]);
 	if (content == COLLECTABLE)
 		return (vars.collect_img[vars.current_img_index]);
 	if (content == WALL)
