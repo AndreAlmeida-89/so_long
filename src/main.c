@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:36:55 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/15 13:40:44 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:35:47 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 
 	if (argc != 2)
-		return (1);
+		return (print_error("Invalid number of arguments", NULL));
 	map = parse_file(argv[1]);
-	if (!*map)
+	if (!map)
 		return (1);
 	if (is_valid_map(map) == 0)
 		return (1);

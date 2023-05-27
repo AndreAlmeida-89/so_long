@@ -6,7 +6,7 @@
 /*   By: andde-so <andde-so@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 22:18:19 by andde-so          #+#    #+#             */
-/*   Updated: 2023/05/20 12:30:10 by andde-so         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:34:11 by andde-so         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,27 @@
 
 static int	check_extention(const char *path, const char *extension)
 {
-	char	*dot;
+	size_t	i;
+	size_t	j;
 
-	if (!path || ft_strlen(path) <= ft_strlen(extension) + 1)
-		return (0);
-	dot = ft_strrchr(path, '.');
-	if (!dot)
-		return (0);
-	return (ft_strncmp(dot + 1, extension, ft_strlen(dot + 1)) == 0);
+	i = ft_strlen(path);
+	j = ft_strlen(extension);
+	while (path[--i] && extension[--j])
+		if (path[i] != extension[j])
+			return (0);
+	while (path[--i])
+		if (path[i] == '.')
+			return (0);
+	return (1);
+}
+
+static int	contains_empty_line(char *str)
+{
+	return (
+		str[0] == '\n'
+		|| str[ft_strlen(str) - 1] == '\n'
+		|| ft_strnstr(str, "\n\n", ft_strlen(str)) != NULL
+	);
 }
 
 static char	*read_file(const char *path)
@@ -57,9 +70,14 @@ char	**parse_file(const char *path)
 	char	**map;
 	char	*file_content;
 
-	if (!check_extention(path, "ber"))
+	if (!check_extention(path, ".ber"))
 		print_error("Invalid file extension.", NULL);
 	file_content = read_file(path);
+	if (contains_empty_line(file_content))
+	{
+		free(file_content);
+		print_error("Map contains empty line.", NULL);
+	}
 	map = ft_split(file_content, '\n');
 	free(file_content);
 	if (!*map)
